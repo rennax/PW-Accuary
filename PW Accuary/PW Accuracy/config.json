@@ -1,0 +1,12 @@
+{
+  "config": {
+    "accuracyString": " Acc",
+    "accuracyValueSize": 40,
+    "accuracyTextSize": 50,
+    "beatAccuracyString": " Beat",
+    "beatAccuracyValueSize": 50,
+    "beatAccuracyTextSize": 50,
+    "boldedText": true,
+    "bulletCountValueSize":  100
+  }
+}
