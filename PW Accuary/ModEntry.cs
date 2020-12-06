@@ -25,9 +25,18 @@ namespace PW_Accuary
 
         public override void OnApplicationStart()
         {
-
-            string json = System.IO.File.ReadAllText(configPath);
-            config = JsonConvert.DeserializeObject<Config>(json);
+            if (System.IO.File.Exists(configPath))
+            {
+                string json = System.IO.File.ReadAllText(configPath);
+                config = JsonConvert.DeserializeObject<Config>(json);
+                MelonLogger.Log("Loaded configuration for PW Accuracy");
+            }
+            else
+            {
+                config = new Config();
+                MelonLogger.LogWarning($"No configuration file exists at {configPath}. Default configuration is loaded");
+            }
+            MelonLogger.Log("PW Accuracy configuration:");
             MelonLogger.Log(config.ToString());
         }
 
@@ -181,7 +190,7 @@ namespace PW_Accuary
 
         public override string ToString()
         {
-            string str = "";
+            string str = "\n";
             str += $"accuracyString: {accuracyString}\n";
             str += $"beatAccuracyString: {beatAccuracyString}\n";
             str += $"boldedText: {boldedText}\n";
